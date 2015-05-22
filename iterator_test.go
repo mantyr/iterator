@@ -115,3 +115,26 @@ func TestItemIndexGet(t *testing.T) {
         t.Errorf("Error %q", *val2)
     }
 }
+func TestMixedTypePtr(t *testing.T) {
+    items := Data()
+
+    st := NewPointer(nil)
+    *st = "value2_update"
+
+    items.Insert("test2", st)
+
+    val, _ := items.Get("test2")
+    if val != "value2_update" {
+        t.Errorf("Error type value, %q", val)
+    }
+}
+func TestMixedTypeVal(t *testing.T) {
+    items := Data()
+
+    items.Add("test2", "value2_update")
+
+    val, _ := items.Select("test2")
+    if *val != "value2_update" {
+        t.Errorf("Error type value, %q", val)
+    }
+}
