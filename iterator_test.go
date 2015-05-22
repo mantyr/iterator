@@ -46,95 +46,27 @@ func TestItem(t *testing.T) {
     }
 }
 
-func TestItemIndex(t *testing.T) {
+func TestObj(t *testing.T) {
     items := Data()
 
-    st := new(interface{})
+    obj := "value2_update"
 
-    *st = "value2_update"
-    items.Insert("test2", st)
+    items.Add("test2", &obj)
 
-    val, ok := items.Get("test2")
-    if !ok {
-        t.Errorf("Error value OK, %q", val)
+    obj = "value2_update_2"
+
+    obj2, _ := items.Get("test2")
+    obj3 := obj2.(*string)
+
+    if *obj2.(*string) != obj {
+        t.Errorf("Error, %q", *obj2.(*string))
     }
-    if val != "value2_update" {
-        t.Errorf("Error Ptr value, %q", val)
+    if *obj3 != obj {
+        t.Errorf("Error, %q", *obj3)
     }
 
-    *st = "value2_update_2"
-
-    val, ok = items.Get("test2")
-    if !ok {
-        t.Errorf("Error value OK, %q", val)
-    }
-    if val != "value2_update_2" {
-        t.Errorf("Error Update items.Items[key] = value, %q", val)
-    }
-}
-func TestNewPointerObject(t *testing.T) {
-    items := Data()
-
-    st := new(interface{})
-    *st = "value"
-
-    st2 := NewPointer(st)
-    items.Insert("test2", st2)
-
-    val, _ := items.Select("test2")
-    if *val != "value" {
-        t.Errorf("Error value, %q", *val)
-    }
-}
-func TestNewPointerNil(t *testing.T) {
-    items := Data()
-
-    st := NewPointer(nil)
-    *st = "value"
-    items.Insert("test2", st)
-
-    val, _ := items.Select("test2")
-    if *val != "value" {
-        t.Errorf("Error value, %q", *val)
-    }
-}
-func TestItemIndexGet(t *testing.T) {
-    items := Data()
-
-    st := NewPointer(nil)
-    *st = "value2_update"
-
-    items.Insert("test2", st)
-
-    val, _ := items.Select("test2")
-    *val = "value2_update_2"
-
-    val2, _ := items.Select("test2")
-
-    if val2 != val {
-        t.Errorf("Error %q", *val2)
-    }
-}
-func TestMixedTypePtr(t *testing.T) {
-    items := Data()
-
-    st := NewPointer(nil)
-    *st = "value2_update"
-
-    items.Insert("test2", st)
-
-    val, _ := items.Get("test2")
-    if val != "value2_update" {
-        t.Errorf("Error type value, %q", val)
-    }
-}
-func TestMixedTypeVal(t *testing.T) {
-    items := Data()
-
-    items.Add("test2", "value2_update")
-
-    val, _ := items.Select("test2")
-    if *val != "value2_update" {
-        t.Errorf("Error type value, %q", val)
+    *obj3 = "test_true"
+    if obj != "test_true" {
+        t.Errorf("Error, %q", obj)
     }
 }
