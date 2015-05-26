@@ -212,7 +212,6 @@ func handler_iterator(w http.ResponseWriter, r *http.Request) {
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </head>
 <BODY>
-
 <div class="content">
         <div class="item finish" data-id="test1">
                 <p class="td_search">value1</p>
