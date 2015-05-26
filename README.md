@@ -172,84 +172,42 @@ func handler_iterator(w http.ResponseWriter, r *http.Request) {
     $ cat tmpl/index.html
 
 ```Html
-<!DOCTYPE html>
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-</head>
-<BODY>
 <div class="content">
     {{range $item := .ItemsString}}
-        <div class="item finish" data-id="{{$item.Key}}">
-                <p class="td_search">{{$item.Value}}</p>
-        </div>
+        <div class="item finish" data-id="{{$item.Key}}">{{$item.Value}}</div>
     {{end}}
 </div>
 <div class="content">
     {{range $item := .Items}}
-        <div class="item finish" data-id="{{$item.Value.Id}}">
-                <p class="td_search">{{$item.Value.Search}}</p>
-        </div>
+        <div class="item finish" data-id="{{$item.Value.Id}}">{{$item.Value.Search}}</div>
     {{end}}
 </div>
 <div class="content">
     {{range $item := .ItemsObj}}
-        <div class="item finish" data-id="{{$item.Value.Get "id"}}">
-                <p class="td_search">{{$item.Value.Get "value"}}</p>
-        </div>
+        <div class="item finish" data-id="{{$item.Value.Get "id"}}">{{$item.Value.Get "value"}}</div>
     {{end}}
 </div>
-</BODY>
-</html>
 ```
 
     http://localhost:8080/test
 
 ```Html
-<!DOCTYPE html>
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-</head>
-<BODY>
 <div class="content">
-        <div class="item finish" data-id="test1">
-                <p class="td_search">value1</p>
-        </div>
-        <div class="item finish" data-id="test2">
-                <p class="td_search">value2</p>
-        </div>
-        <div class="item finish" data-id="test3">
-                <p class="td_search">value3</p>
-        </div>
-        <div class="item finish" data-id="test4">
-                <p class="td_search">value4</p>
-        </div>
+        <div class="item finish" data-id="test1">value1</div>
+        <div class="item finish" data-id="test2">value2</div>
+        <div class="item finish" data-id="test3">value3</div>
+        <div class="item finish" data-id="test4">value4</div>
 </div>
 <div class="content">
-        <div class="item finish" data-id="1">
-                <p class="td_search">test1</p>
-        </div>
-        <div class="item finish" data-id="2">
-                <p class="td_search">test2</p>
-        </div>
-        <div class="item finish" data-id="3">
-                <p class="td_search">test3</p>
-        </div>
+        <div class="item finish" data-id="1">test1</div>
+        <div class="item finish" data-id="2">test2</div>
+        <div class="item finish" data-id="3">test3</div>
 </div>
 <div class="content">
-        <div class="item finish" data-id="1">
-                <p class="td_search">test1</p>
-        </div>
-        <div class="item finish" data-id="2">
-                <p class="td_search">test2</p>
-        </div>
-        <div class="item finish" data-id="3">
-                <p class="td_search">test3</p>
-        </div>
+        <div class="item finish" data-id="1">test1</div>
+        <div class="item finish" data-id="2">test2</div>
+        <div class="item finish" data-id="3">test3</div>
 </div>
-</BODY>
-</html>
 ```
 
 ## More Examples
