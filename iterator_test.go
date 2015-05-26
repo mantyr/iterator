@@ -29,7 +29,7 @@ func TestIter(t *testing.T) {
 
     /* Default range:
     for key, value := items.Items {
-        fmt.Printl(key, value)
+        fmt.Println(key, value)
     }
     */
 }
