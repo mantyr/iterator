@@ -70,3 +70,19 @@ func TestObj(t *testing.T) {
         t.Errorf("Error, %q", obj)
     }
 }
+
+func TestDel(t *testing.T) {
+    items := Data()
+    items.Del("test2")
+
+    i := 0
+    for item := range items.Iter() {
+        if item.Index != i {
+            t.Errorf("Position error, %q, %q %q", strconv.Itoa(i), strconv.Itoa(item.Index), item.Value)
+        }
+        i++
+    }
+    if i > len(items.Items) {
+        t.Errorf("Error delete, fixed last items")
+    }
+}

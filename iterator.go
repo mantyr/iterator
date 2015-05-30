@@ -42,3 +42,12 @@ func (i *Items) Get(key interface{}) (interface{}, bool)  {
     value, ok := i.Items[key]
     return value, ok
 }
+func (i *Items) Del(key interface{}) {
+    delete(i.Items, key)
+    for id, val := range i.Keys {
+        if val == key {
+            i.Keys = append(i.Keys[:id], i.Keys[id+1:]...)
+            return
+        }
+    }
+}
