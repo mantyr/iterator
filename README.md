@@ -1,5 +1,7 @@
 # Golang Iterator for ordered map
 
+[![Build Status](https://travis-ci.org/mantyr/iterator.svg)](https://travis-ci.org/mantyr/iterator) [![GoDoc](https://godoc.org/github.com/mantyr/iterator?status.png)](http://godoc.org/github.com/mantyr/iterator)
+
 1. The order of the elements in the map.
 
 2. Transparent use *interface{} as value.
