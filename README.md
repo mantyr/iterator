@@ -81,6 +81,38 @@ Key "test5", value param2 "test1"
 */
 ```
 
+## Notice
+
+Not use channel if you use "back" in loop. See also [#1](/../../issues/1)
+
+```
+package main
+
+import (
+    "github.com/mantyr/iterator"
+}
+
+
+func main() {
+    items := iterator.New()
+    for i := 0; i < 100; i++ {
+        items.Add(i, i)
+    }
+
+    i := 0
+    for _, key := range items.Keys {
+        item, ok := items.Get(key)
+        if !ok {
+            continue
+        }
+        if item == 10 {
+            break
+        }
+        i++
+    }
+}
+```
+
 ## Example for html/template and helper function for objects
 
 ```Go
