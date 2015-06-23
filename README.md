@@ -85,7 +85,7 @@ Key "test5", value param2 "test1"
 
 Not use channel if you use "back" in loop. See also [#1](/../../issues/1)
 
-```
+```Go
 package main
 
 import (
