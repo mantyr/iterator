@@ -92,7 +92,6 @@ import (
     "github.com/mantyr/iterator"
 }
 
-
 func main() {
     items := iterator.New()
     for i := 0; i < 100; i++ {
