@@ -86,3 +86,25 @@ func TestDel(t *testing.T) {
         t.Errorf("Error delete, fixed last items")
     }
 }
+
+func TestIterBack(t *testing.T) {
+    items := New()
+    for i := 0; i < 100; i++ {
+        items.Add(i, i)
+    }
+
+    i := 0
+    for _, key := range items.Keys {
+        item, ok := items.Get(key)
+        if !ok {
+            continue
+        }
+        if item == 10 {
+            break
+        }
+        i++
+    }
+    if i != 10 {
+        t.Errorf("Ooops, position error")
+    }
+}
